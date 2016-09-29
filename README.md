@@ -1,1 +1,1 @@
-# I will use multiple type of scripts in this repository
+# I will use multiple type of python scripts in this repository
