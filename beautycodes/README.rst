@@ -27,7 +27,7 @@ In a terminal:
     # python2.7 -m pip install requests
 
 
-Replace e-mail addresses indicated in the usdeurorates.py file with yours.
+Replace e-mail addresses indicated in the "usdeurorates.py" file with yours.
 
 Syntax:
 
