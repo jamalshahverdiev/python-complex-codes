@@ -28,12 +28,12 @@ faz = printer_func(str(finsurl), str(usd), str(eur))
 caz = printer_func(str(cbarurl), str(cbusd), str(cbeur))
 
 message = """From: Euro Dollar <usdeurmezennesi@gmail.com>
-To: Jamal Shahverdiev <rb@octopus.vc>
+To: Email Author <email.author@example.com>
 Subject: Euro Dollar mezennesi
 
 %s %s, %s
 %s %s, %s
 """ % (faz[0], faz[1], faz[2], caz[0], caz[1], caz[2])
 
-server.sendmail("usdeurmezennesi@gmail.com", "rb@octopus.vc", message)
+server.sendmail("usdeurmezennesi@gmail.com", "email.author@example.com", message)
 server.quit()
