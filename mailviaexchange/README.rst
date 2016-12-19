@@ -2,7 +2,7 @@
 Send email via Exchange
 ***********************
 
-.. image:: https://img.shields.io/pypi/pyversions/Django.svg
+.. image:: https://img.shields.io/pypi/wheel/Django.svg
 
 Python script to send email via Exchange mail server.
 
