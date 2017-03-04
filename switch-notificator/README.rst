@@ -27,3 +27,6 @@ Syntax:
     # git clone https://github.com/jamalshahverdiev/python-general-codes.git
     # cd python-general-codes/switch-notificator
     # ./switchnotificator.py
+..
+
+Just add "switchnotificator.py" script to hourly CRON.
