@@ -45,7 +45,7 @@ def filterMAC(ip, vlanID):
 
 iplist = open('iplist', 'r')
 for ip in iplist.readlines():
-    ssh.connect(''.join(ip.split()), port=22, username='viewuser', password='Windows7@', look_for_keys=False, allow_agent=False)
+    ssh.connect(''.join(ip.split()), port=22, username='switchuser', password='switchpass', look_for_keys=False, allow_agent=False)
     macget('823', ''.join(ip.split()))
     filterMAC(''.join(ip.split()), '823')
 
