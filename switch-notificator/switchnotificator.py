@@ -16,7 +16,7 @@ outputdir = codepath+'/outdir/'
 
 server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
-server.login("ultra.notificator@gmail.com", "Ultra123")
+server.login("company.notificator@gmail.com", "CompanyEmailPASS")
 
 #username = raw_input('Please '+enter+' '+username+' for '+ciscodevices+': ')
 #password = getpass.getpass('Please '+enter+' '+password+' for '+ciscodevices+': ')
@@ -28,8 +28,8 @@ ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 def createMessage(mac):
     global message
-    message =  """From: Ultra Notificator <ultra.notificator@gmail.com>
-To: Qurbanov Araz <qurbanovaraz@gmail.com>
+    message =  """From: Company Notificator <company.notificator@gmail.com>
+To: Email To <email.to@gmail.com>
 Subject: Switch Port MAC address is Changed
 {0} MAC address is not founded in "StaticMacs" file""".format(mac)
 
@@ -56,7 +56,7 @@ with open(outputdir+'/MAC.result', 'r') as macresult:
             pass
         else:
             createMessage(line.replace('\n', ''))
-            server.sendmail("ultra.notificator@gmail.com", "qurbanovaraz@gmail.com", message)
+            server.sendmail("company.notificator@gmail.com", "email.to@gmail.com", message)
             server.quit()
             os.system('rm -rf '+outputdir+'/*')
 
