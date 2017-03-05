@@ -1,27 +1,17 @@
 #!/usr/bin/env python
-
 import smtplib
 import os
-#from termcolor import colored, cprint
-#import getpass
 import paramiko
 
 codepath = os.getcwd()
 outputdir = codepath+'/outdir/'
 
-#username = colored('username', 'green', attrs=['bold', 'underline'])
-#password = colored('password', 'magenta', attrs=['bold', 'underline'])
-#enter = colored('Enter', 'cyan', attrs=['bold', 'underline'])
-#ciscodevices = colored('Cisco devices', 'cyan', attrs=['bold', 'underline'])
-
 server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
 server.login("company.notificator@gmail.com", "CompanyEmailPASS")
-
-#username = raw_input('Please '+enter+' '+username+' for '+ciscodevices+': ')
-#password = getpass.getpass('Please '+enter+' '+password+' for '+ciscodevices+': ')
 # Command for get template:
-# cat outdir/10.80.80.14 | grep -v -i ALL | grep 823 | awk '{print $2 }'
+#def get_mac_list(ip, vlanID):
+#    os.system('cat outdir/'+ip+' | grep -v -i ALL | grep '+vlanID+' | awk \'{print $2 }\'')
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
