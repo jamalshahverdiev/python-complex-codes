@@ -9,9 +9,13 @@ outputdir = codepath+'/outdir/'
 server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
 server.login("company.notificator@gmail.com", "CompanyEmailPASS")
-# Function to get static MAC template list:
-#def get_staticmacs(ip, vlanID):
-#    os.system('cat outdir/'+ip+' | grep -v -i ALL | grep '+vlanID+' | awk \'{print $2 }\'')
+
+if os.path.exists(codepath+'/StaticMacs') and os.path.getsize(codepath+'/StaticMacs') > 0:
+    pass
+else:
+    print('File "StaticMacs" does not exists or empty!!!')
+    print('To use "switchnotificator.py" script you must define static MAC address list in the "StaticMacs" file...')
+    print('If you want define static mac list then, connect all your computers to you switch devices and use "createstaticmacs.py" script!!!')
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
