@@ -9,8 +9,8 @@ outputdir = codepath+'/outdir/'
 server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
 server.login("company.notificator@gmail.com", "CompanyEmailPASS")
-# Command for get template:
-#def get_mac_list(ip, vlanID):
+# Function to get static MAC template list:
+#def get_staticmacs(ip, vlanID):
 #    os.system('cat outdir/'+ip+' | grep -v -i ALL | grep '+vlanID+' | awk \'{print $2 }\'')
 
 ssh = paramiko.SSHClient()
