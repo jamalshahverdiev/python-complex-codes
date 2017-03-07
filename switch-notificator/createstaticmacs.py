@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 import os
 import paramiko
+import sys
 
 codepath = os.getcwd()
 outputdir = codepath+'/outdir/'
+
+if len(sys.argv) < 3:
+    sys.exit('Usage: {} switchusername switchpassword vlanID'.format(sys.argv[0]))
+else:
+    pass
 
 def macget(vlanID, ip):
     stdin, stdout, stderr = ssh.exec_command('show mac address-table vlan '+vlanID+'')
@@ -21,9 +27,9 @@ ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 iplist = open('iplist', 'r')
 for ip in iplist.readlines():
-    ssh.connect(''.join(ip.split()), port=22, username='switchuser', password='switchpass', look_for_keys=False, allow_agent=False)
-    macget('823', ''.join(ip.split()))
-    getallMACs(''.join(ip.split()), '823')
+    ssh.connect(''.join(ip.split()), port=22, username=sys.argv[1], password=sys.argv[2], look_for_keys=False, allow_agent=False)
+    macget(sys.argv[3], ''.join(ip.split()))
+    getallMACs(''.join(ip.split()), sys.argv[3])
 
 with open(outputdir+'/MAC.list', 'r') as dirtymacs:
     for line in dirtymacs.readlines():
