@@ -2,6 +2,7 @@
 import smtplib
 import os
 import paramiko
+import sys
 
 codepath = os.getcwd()
 outputdir = codepath+'/outdir/'
