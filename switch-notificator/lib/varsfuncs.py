@@ -11,8 +11,8 @@ ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 def emailsend(frommail, fromemailpass, tomail, mac, vlanID):
-    message =  """From: Ultra Notificator <{2}>
-To: Qurbanov Araz <{3}>
+    message =  """From: From Email <{2}>
+To: To Email <{3}>
 Subject: New MAC address for VLAN {1}
 MAC address "{0}" is not founded in "StaticMacs" file""".format(mac, vlanID, frommail, tomail)
     server = smtplib.SMTP('smtp.gmail.com', 587)
