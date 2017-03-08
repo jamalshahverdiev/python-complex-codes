@@ -26,6 +26,5 @@ with open(outputdir+'/MAC.list', 'r') as dirtymacs:
                     print('New line is written to the StaticMacs file!!!')
     os.system('rm -rf '+outputdir+'/*')
 
-#iplist.close()
 ssh.close()
 

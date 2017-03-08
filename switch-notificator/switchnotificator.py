@@ -23,7 +23,6 @@ with open('iplist', 'r') as iplist:
         macget(sys.argv[3], ''.join(ip.split()))
         filterMAC(''.join(ip.split()), sys.argv[3])
 
-
 with open(outputdir+'/MAC.result', 'r') as macresult:
     for line in macresult.readlines():
         with open(codepath+'/StaticMacs') as smacs:
@@ -33,5 +32,4 @@ with open(outputdir+'/MAC.result', 'r') as macresult:
                 emailsend(frommail, fromemailpass, tomail, line.replace('\n', ''), sys.argv[3])
                 os.system('rm -rf '+outputdir+'/*')
 
-#iplist.close()
 ssh.close()
