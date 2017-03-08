@@ -10,6 +10,7 @@ else:
     print('File "StaticMacs" does not exists or empty!!!')
     print('To use "switchnotificator.py" script you must define static MAC address list in the "StaticMacs" file...')
     print('If you want define static mac list then, connect all your computers to you switch devices and use "createstaticmacs.py" script!!!')
+    sys.exit()
 
 if len(sys.argv) < 4:
     sys.exit('Usage: {} switchusername switchpassword vlanID'.format(sys.argv[0]))
