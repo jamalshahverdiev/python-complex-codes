@@ -7,7 +7,7 @@ outputdir = codepath+'/outdir/'
 frommail = "from.email@gmail.com"
 fromemailpass = "from.email.password"
 tomail= "to.email@gmail.com"
-iplist = open('iplist', 'r')
+#iplist = open('iplist', 'r')
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 

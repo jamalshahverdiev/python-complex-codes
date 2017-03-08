@@ -17,19 +17,21 @@ if len(sys.argv) < 4:
 else:
     pass
 
-for ip in iplist.readlines():
-    ssh.connect(''.join(ip.split()), port=22, username=sys.argv[1], password=sys.argv[2], look_for_keys=False, allow_agent=False)
-    macget(sys.argv[3], ''.join(ip.split()))
-    filterMAC(''.join(ip.split()), sys.argv[3])
+with open('iplist', 'r') as iplist:
+    for ip in iplist.readlines():
+        ssh.connect(''.join(ip.split()), port=22, username=sys.argv[1], password=sys.argv[2], look_for_keys=False, allow_agent=False)
+        macget(sys.argv[3], ''.join(ip.split()))
+        filterMAC(''.join(ip.split()), sys.argv[3])
 
 
 with open(outputdir+'/MAC.result', 'r') as macresult:
     for line in macresult.readlines():
-        if line in open(codepath+'/StaticMacs'):
-            pass
-        else:
-            emailsend(frommail, fromemailpass, tomail, line.replace('\n', ''), sys.argv[3])
-            os.system('rm -rf '+outputdir+'/*')
+        with open(codepath+'/StaticMacs') as smacs:
+            if line in smacs:
+                pass
+            else:
+                emailsend(frommail, fromemailpass, tomail, line.replace('\n', ''), sys.argv[3])
+                os.system('rm -rf '+outputdir+'/*')
 
-iplist.close()
+#iplist.close()
 ssh.close()

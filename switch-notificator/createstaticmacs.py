@@ -9,21 +9,23 @@ if len(sys.argv) < 4:
 else:
     pass
 
-for ip in iplist.readlines():
-    ssh.connect(''.join(ip.split()), port=22, username=sys.argv[1], password=sys.argv[2], look_for_keys=False, allow_agent=False)
-    macget(sys.argv[3], ''.join(ip.split()))
-    getallMACs(''.join(ip.split()), sys.argv[3])
+with open('iplist', 'r') as iplist:
+    for ip in iplist.readlines():
+        ssh.connect(''.join(ip.split()), port=22, username=sys.argv[1], password=sys.argv[2], look_for_keys=False, allow_agent=False)
+        macget(sys.argv[3], ''.join(ip.split()))
+        getallMACs(''.join(ip.split()), sys.argv[3])
 
 with open(outputdir+'/MAC.list', 'r') as dirtymacs:
     for line in dirtymacs.readlines():
         with open('StaticMacs', 'a') as macresult:
-            if line in open(codepath+'/StaticMacs'):
-                print('This line is exists in the StaticMacs file!!!')
-            else:
-                macresult.write(line)
-                print('New line is written to the StaticMacs file!!!')
+            with open(codepath+'/StaticMacs') as smacs:
+                if line in smacs:
+                    print('This line is exists in the StaticMacs file!!!')
+                else:
+                    macresult.write(line)
+                    print('New line is written to the StaticMacs file!!!')
     os.system('rm -rf '+outputdir+'/*')
 
-iplist.close()
+#iplist.close()
 ssh.close()
 
