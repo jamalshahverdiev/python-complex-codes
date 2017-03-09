@@ -16,7 +16,7 @@ Usage
 =====
 
 Requirements:
-    Python2.7 with "paramiko" must be installed:
+    Python2.7 or Python3.4 with "paramiko" must be installed:
         
 
 Replace e-mail addresses and password indicated in the "switchnotificator.py" file with yours.
