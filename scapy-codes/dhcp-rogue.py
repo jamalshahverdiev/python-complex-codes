@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import logging
+logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 from scapy.all import *
 fam, hw = get_if_raw_hwaddr(conf.iface)
 
 # Define a callback function for when DHCP packets are received
 def dhcp_callback(pkt):
-    # Check if the DHCP packet is a DHCP offer
+    # Check if the DHCP packet is a DHCP offer from DHCP server
     if DHCP in pkt and pkt[DHCP].options[0][1] == 2:
-        #print('DHCP offer received from %s (%s)' % (pkt[IP].src, pkt[Ether].src))
         print('DHCP server IP address: {0} MAC address: {1}'.format(pkt[IP].src, pkt[Ether].src))
 
 # Construct the DHCP request

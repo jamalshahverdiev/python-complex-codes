@@ -7,6 +7,6 @@ from scapy.all import sr1,IP,ICMP
 
 ipadd = raw_input('Please enter IP address: ')
 
-pingresponse=sr1(IP(dst=ipadd)/ICMP())
-if pingresponse:
-    pingresponse.show()
+pingrespconst=sr1(IP(dst=ipadd)/ICMP())
+if pingrespconst:
+    pingrespconst.show()

@@ -1,5 +1,4 @@
 #! /usr/bin/env python
-# arping2tex : arpings a network and outputs a LaTeX table as a result
 # Don't forget: yum -y install tcpdump
 import sys
 import logging
@@ -10,10 +9,10 @@ if len(sys.argv) != 2:
     print("Usage: ./arping 192.168.1.0/24")
     sys.exit(1)
 
-conf.verb=2
+conf.verb=0
 ans,unans=srp(Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(pdst=sys.argv[1]), timeout=2)
 
-print('')
-print('Result of APRING: ')
+#print('Result of APRING: ')
+print('   MAC Address       IP Address')
 for snd,rcv in ans:
-    print(rcv.sprintf("%Ether.src% & %ARP.psrc%"))
+    print(rcv.sprintf("%Ether.src% | %ARP.psrc%"))
