@@ -6,7 +6,7 @@ from scapy.all import send, IP, ICMP, srloop
 
 ipadd = raw_input('Please enter IP address to ping: ')
 for i in range(1, 2):
-    print('Sent count: {0}'.format(i))
+    #print('Sent count: {0}'.format(i))
     send(IP(src="",dst="{0}".format(ipadd))/ICMP()/"""
             USUDUM AY USUDUM,
             DAGDAN ALMA DASIDIM,
