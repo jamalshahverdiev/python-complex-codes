@@ -10,7 +10,7 @@ Python script to send email about MAC address changes.
 * ``read_zip_file`` - This function prints content of ZIP file and extract in the same folder.
 * ``update_json_file`` - This function opens JSON file and edit defined key to the defined value.
 * ``get_all_file_paths`` - This function creates list of the all files from argument PATH.
-  ``prepareZipFile`` - This function will use ``get_all_file_paths`` function to get all files PATH and then archive them to the other file.
+* ``prepareZipFile`` - This function will use ``get_all_file_paths`` function to get all files PATH and then archive them to the other file.
 
 =====
 Usage
