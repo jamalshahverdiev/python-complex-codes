@@ -1,7 +1,6 @@
 #!/usr/bin/env python3.4
 
 import zipfile
-import os
 import simplejson as json
 import os
 
