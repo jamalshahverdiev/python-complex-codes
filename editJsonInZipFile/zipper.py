@@ -20,19 +20,16 @@ def read_zip_file(fullZipPath):
         zfile.extractall()
         print('Done!')
 
-#jsonContent = read_zip_file(fullZipPath)
-read_zip_file(fullZipPath)
+def update_json_file(jsonFileName):
+    with open(jsonFileName, "r+") as jsonFile:
+        data = json.load(jsonFile)
 
-with open(jsonFileName, "r+") as jsonFile:
-    data = json.load(jsonFile)
+        tmp = data["text"]
+        data["text"] = "My New Message"
 
-    tmp = data["text"]
-    data["text"] = "My New Message"
-
-    jsonFile.seek(0)  # rewind
-    json.dump(data, jsonFile, sort_keys=True, indent=2)
-    jsonFile.truncate()
-
+        jsonFile.seek(0)  # rewind
+        json.dump(data, jsonFile, sort_keys=True, indent=2)
+        jsonFile.truncate()
 
 def get_all_file_paths(directory):
 
@@ -64,6 +61,7 @@ def prepareZipFile(directory):
             zip.write(file)
     print('All files zipped successfully!')
 
+
+read_zip_file(fullZipPath)
+update_json_file(jsonFileName)
 prepareZipFile(directory)
-
-
