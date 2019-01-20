@@ -1,0 +1,6 @@
+{
+  "imagename": "nginx",
+  "containername": "websrv",
+  "daemonize": "true",
+  "exposedPort": "8001"
+}
