@@ -28,6 +28,27 @@ Syntax:
 ..
 
 
-* If you want use ``switchnotificator.py`` script automatically every minute, just add the following line to your crontab file::
+* Get contaner status with the name **web**:
 
-     * * * * * /root/switch-notificator/switchnotificator.py switchusername 'switch_long_password' vlanID
+.. code-block:: bash
+
+    # curl http://10.1.42.201/getcontainer?name=web
+..
+
+* Get status of all running containers:
+
+.. code-block:: bash
+
+    # curl http://10.1.42.201/getRunningContainers
+..
+
+
+* Create new container with the payload data from **jsondata.json** file. In the JSON file we must define values of the needed fields.
+* **imagename** - in the value must be defined image name from https://hub.docker.com 
+* **containername** - in the value must be defined container name which will be executed in the server
+* **exposedPort** - in the value must be defined the port number which will be exposed to the Host OS
+
+.. code-block:: bash
+  
+    # curl -v -s -XPOST -H "Content-type: application/json" http://10.1.42.201/createcontainer -d @jsondata.json
+..
