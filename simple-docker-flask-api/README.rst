@@ -14,18 +14,17 @@ Usage
 =====
 
 Requirements:
-    Python2.7 or Python3.4 with ``paramiko`` must be installed:
+    Python2.7 or Python3.4 with ``flask`` must be installed:
         
-
-Replace e-mail addresses and password indicated in the ``switchnotificator.py`` file with yours.
 
 Syntax:
 
 .. code-block:: bash
 
+    # pip install flask
     # git clone https://github.com/jamalshahverdiev/python-general-codes.git
-    # cd python-general-codes/switch-notificator
-    # ./switchnotificator.py switchusername 'switch_long_password' vlanID
+    # cd python-general-codes/simple-docker-flask-api
+    # ./dockerApi.py
 ..
 
 
