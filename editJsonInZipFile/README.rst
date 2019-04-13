@@ -4,7 +4,7 @@ Extract ZIP file. Edit JSON to update with new value of the key. Compress all fi
 
 .. image:: https://img.shields.io/codecov/c/github/codecov/example-python.svg
 
-Python script to send email about MAC address changes.
+Python script to extract ZIP file utdate JOSN key/value and create new ZIP file. 
 
 * **zipper.py** - Script contains four functions. ``read_zip_file``, ``update_json_file``, ``get_all_file_paths`` and ``prepareZipFile``. 
 * ``read_zip_file`` - This function prints content of ZIP file and extract in the same folder.
@@ -17,7 +17,7 @@ Usage
 =====
 
 Requirements:
-    Python3.4 with ``simplejson`` library installed:
+    Python3.4 with ``simplejson`` and ``argparse`` library installed:
         
 
 Syntax:
@@ -25,4 +25,6 @@ Syntax:
 .. code-block:: bash
 
     # ./zipper.py
+    usage: zipper.py [-h] -zin ZIPINPUT -zout ZIPTOOUT -jsonf JSONFILE
+    zipper.py: error: the following arguments are required: -zin, -zout, -jsonf
 ..
