@@ -6,7 +6,7 @@ Extract ZIP file. Edit JSON to update with new value of the key. Compress all fi
 
 Python script to extract ZIP file utdate JOSN key/value and create new ZIP file. 
 
-* **zipper.py** - Script contains four functions. ``read_zip_file``, ``update_json_file``, ``get_all_file_paths`` and ``prepareZipFile``. 
+* **editjsoninzip.py** - Script contains four functions. ``read_zip_file``, ``update_json_file``, ``get_all_file_paths`` and ``prepareZipFile``. 
 * ``read_zip_file`` - This function prints content of ZIP file and extract in the same folder.
 * ``update_json_file`` - This function opens JSON file and edit defined key to the defined value.
 * ``get_all_file_paths`` - This function creates list of the all files from argument PATH.
@@ -24,7 +24,7 @@ Syntax:
 
 .. code-block:: bash
 
-    # ./zipper.py
-    usage: zipper.py [-h] -zin ZIPINPUT -zout ZIPTOOUT -jsonf JSONFILE
-    zipper.py: error: the following arguments are required: -zin, -zout, -jsonf
+    # ./editjsoninzip.py
+    usage: editjsoninzip.py [-h] -zin ZIPINPUT -zout ZIPTOOUT -jsonf JSONFILE
+    editjsoninzip.py: error: the following arguments are required: -zin, -zout, -jsonf
 ..
