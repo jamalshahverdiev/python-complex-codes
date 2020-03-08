@@ -21,5 +21,5 @@ reportbug==7.1.7
 requests==2.12.4
 SecretStorage==2.3.1
 six==1.10.0
-urllib3==1.19.1
+urllib3==1.24.2
 Werkzeug==1.0.0
