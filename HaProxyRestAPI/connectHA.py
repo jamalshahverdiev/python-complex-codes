@@ -19,7 +19,7 @@ def getSelectedBackend():
 @app.route('/getbacksrvwight', methods=['GET'])
 def getBackendServerWeight():
     if 'backend_name' in request.args and 'server_name' in request.args:
-	return executeCommand('get weight ' + request.args.get('backend_name') + '/' + request.args.get('server_name') + ' \n')
+        return executeCommand('get weight ' + request.args.get('backend_name') + '/' + request.args.get('server_name') + ' \n')
     else:
         return "server_name and backend_name are required parameters", 404
 
