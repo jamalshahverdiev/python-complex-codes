@@ -1,4 +1,18 @@
 import socket
+from flask import make_response, request
+from functools import wraps
+
+def auth_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth = request.authorization
+        if auth and auth.username == 'haproxy' and auth.password == 'haproxy':
+            return f(*args, **kwargs)
+
+        return make_response('Login and password required!', 401, {'WWW-Authenticate' : 'Basic realm="Login Required"'})
+
+    return decorated
+
 
 def executeCommand(commandToSend):
     socket_open = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
