@@ -9,7 +9,7 @@ def auth_required(f):
         if auth and auth.username == 'haproxy' and auth.password == 'haproxy':
             return f(*args, **kwargs)
 
-        return make_response('Login and password required!', 401, {'WWW-Authenticate' : 'Basic realm="Login Required"'})
+        return make_response('Login and password required!', 400, {'WWW-Authenticate' : 'Basic realm="Login Required"'})
 
     return decorated
 
