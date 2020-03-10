@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 
-from separated_func_file import executeCommand, auth_required
+from separated_func_file import executeCommand, auth_required, filter_cicd
 from flask import Flask, request
 
 app = Flask(__name__)
 
 @app.route('/backends', methods=['GET']) 
+@filter_cicd
 @auth_required
 def getBackends():
     return executeCommand('show backend' + '\n')
 
 @app.route('/getbacksrvs', methods=['GET'])
+@filter_cicd
 @auth_required
 def getSelectedBackend():
     if 'backend_name' in request.args:
@@ -19,6 +21,7 @@ def getSelectedBackend():
         return "backend_name required parameter", 404
 
 @app.route('/getbacksrvwight', methods=['GET'])
+@filter_cicd
 @auth_required
 def getBackendServerWeight():
     if 'backend_name' in request.args and 'server_name' in request.args:
@@ -27,6 +30,7 @@ def getBackendServerWeight():
         return "server_name and backend_name are required parameters", 404
 
 @app.route('/setbacksrvwight', methods=['POST'])
+@filter_cicd
 @auth_required
 def setBackendServerWeight():
     if 'backend_name' in request.args and 'server_name' in request.args and 'weight' in request.args:
@@ -35,6 +39,7 @@ def setBackendServerWeight():
         return "backend_name, server_name and weight are required parameters", 404
 
 @app.route('/drainornot', methods=['POST'])
+@filter_cicd
 @auth_required
 def drainOrNot():
     if 'traffic' in request.args and 'backend_name' in request.args and 'server_name' in request.args:

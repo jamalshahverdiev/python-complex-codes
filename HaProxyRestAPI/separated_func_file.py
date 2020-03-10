@@ -1,5 +1,5 @@
 import socket
-from flask import make_response, request
+from flask import make_response, request, abort
 from functools import wraps
 
 def auth_required(f):
@@ -13,6 +13,15 @@ def auth_required(f):
 
     return decorated
 
+def filter_cicd(f):
+    @wraps(f)
+    def wrapped(*args, **kwargs):
+        if request.remote_addr == "192.168.9.41":
+            return f(*args, **kwargs)
+        else:
+            return abort(403)
+
+    return wrapped
 
 def executeCommand(commandToSend):
     socket_open = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
