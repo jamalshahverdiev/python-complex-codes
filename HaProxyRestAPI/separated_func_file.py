@@ -16,7 +16,7 @@ def auth_required(f):
 def filter_cicd(f):
     @wraps(f)
     def wrapped(*args, **kwargs):
-        if request.remote_addr == "192.168.9.41":
+        if request.remote_addr == "192.168.9.70":
             return f(*args, **kwargs)
         else:
             return abort(403)
