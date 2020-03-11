@@ -2,6 +2,8 @@ import socket
 from flask import make_response, request, abort
 from functools import wraps
 
+API_ALLOWED_IPS = ['192.168.9.70', '192.168.9.41', '192.168.9.40']
+
 def auth_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -16,11 +18,14 @@ def auth_required(f):
 def filter_cicd(f):
     @wraps(f)
     def wrapped(*args, **kwargs):
-        if request.remote_addr == "192.168.9.70":
-            return f(*args, **kwargs)
-        else:
-            return abort(403)
-
+        for IP in API_ALLOWED_IPS:
+            if str(request.remote_addr).startswith(IP) or str(request.remote_addr) == IP:
+                return f(*args, **kwargs)
+        return 'Your IP Is Not allowed ' + request.remote_addr
+#        if request.remote_addr == "192.168.9.70":
+#            return f(*args, **kwargs)
+#        else:
+#            return abort(403)
     return wrapped
 
 def executeCommand(commandToSend):
