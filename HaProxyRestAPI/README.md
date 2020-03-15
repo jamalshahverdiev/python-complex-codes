@@ -38,3 +38,8 @@ $ curl -XPOST -u haproxy:haproxy "http://192.168.9.41:5000/drainornot?traffic=di
 ```zsh
 $ curl -XPOST -u haproxy:haproxy "http://192.168.9.41:5000/drainornot?traffic=enable&backend_name=http_port_80&server_name=server1"
 ```
+
+##### To use this script in the startup we can put `haproxyapi.service` under `/etc/systemd/system` folder. Don't forget create `/etc/haproxyapi` folder and upload source code files under this folder. At the end execute the following commands to activate and enable service.
+```zsh
+$ systemctl daemon-reload && systemctl --now start haproxyapi 
+```
