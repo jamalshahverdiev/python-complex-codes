@@ -7,7 +7,7 @@
 
 ##### For the `Basic Authentication` I have used `haproxy` username and password inside of the `separated_func_file.py` file which you can change.
 
-##### For the IP access I have used `API_ALLOWED_IPS` variable which is defined in the `separated_func_file.py` (Add your CI/CD IP address list to the `API_ALLOWED_IPS` variable).
+##### I have used `access_list.txt` file which contains allowed IP address list. I am reading content of the `access_list.txt` file from `separated_func_file.py` (Add your CI/CD IP address list to the `access_list.txt` file).
 
 ##### Get list of the backend configurations:
 ```zsh
