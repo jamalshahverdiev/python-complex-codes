@@ -1,0 +1,17 @@
+[Unit]
+Description=HAProxy Load Balancer API
+After=network.target syslog.service
+
+[Service]
+WorkingDirectory=/etc/haproxyapi
+PIDFile=/run/haproxy/haproxyapi.pid
+PermissionsStartOnly=true
+ExecStartPre=-/bin/mkdir -p /run/haproxy
+ExecStart=/bin/bash -c "./connectHA.py & echo $! > /run/haproxy/haproxyapi.pid"
+Restart=always
+Type=simple
+User=root
+
+[Install]
+WantedBy=multi-user.target
+
