@@ -2,8 +2,6 @@ import socket
 from flask import make_response, request, abort
 from functools import wraps
 
-API_ALLOWED_IPS = ['192.168.9.70', '192.168.9.41', '192.168.9.40']
-
 def auth_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -18,6 +16,11 @@ def auth_required(f):
 def filter_cicd(f):
     @wraps(f)
     def wrapped(*args, **kwargs):
+
+        with open('access_list.txt', 'r') as filehandle:
+            filecontents = filehandle.readlines()
+            API_ALLOWED_IPS = list(map(lambda x:x.strip(),filecontents))
+
         for IP in API_ALLOWED_IPS:
             if str(request.remote_addr).startswith(IP) or str(request.remote_addr) == IP:
                 return f(*args, **kwargs)
