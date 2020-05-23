@@ -1,6 +1,5 @@
 #### This is the simple REST API to use HAProxy inside of our DevOps environment via CI/CD pipeline. 
 
-Video:
 [![Video Explanation](https://img.youtube.com/vi/E23p6kZVSN4/0.jpg)](https://www.youtube.com/watch?v=E23p6kZVSN4 "Click to see video on youtube.com") 
 
 ##### To execute this python script we must install some needed libraries like as the following:
